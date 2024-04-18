@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'default.html' %}
+{% block title %}
+<h1>Все объявления</h1>
+{% endblock %}
+{% block content %}
+<h1><a href="{% url 'posts_list' %}">Hiii</a></h1>
+<hr class="my-4" />
+{% endblock %}
