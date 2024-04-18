@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c417474-4566-42c1-9e4e-4101dc58a6a8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/desk.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="8c417474-4566-42c1-9e4e-4101dc58a6a8" name="Changes" comment="first commit">
+      <change beforePath="$PROJECT_DIR$/.idea/desk.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/desk.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmorpg/mmo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmo/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmorpg/mmo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmorpg/mmorpg/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmorpg/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmorpg/mmorpg/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmorpg/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +90,19 @@
       <option name="presentableId" value="Default" />
       <updated>1713427735401</updated>
     </task>
+    <task id="LOCAL-00001" summary="first commit">
+      <option name="closed" value="true" />
+      <created>1713428462943</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713428462943</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
   </component>
 </project>
