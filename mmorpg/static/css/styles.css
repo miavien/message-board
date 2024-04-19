@@ -4576,6 +4576,9 @@ textarea.form-control-lg {
   border-top-right-radius: var(--bs-pagination-border-radius);
   border-bottom-right-radius: var(--bs-pagination-border-radius);
 }
+.page-title {
+    font-size: 2rem;
+}
 
 .pagination-lg {
   --bs-pagination-padding-x: 1.5rem;

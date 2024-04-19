@@ -1,0 +1,10 @@
+{% extends 'default.html' %}
+{% block title %}
+<h1>{{ post.title }}</h1>
+<hr>
+{% endblock %}
+{% block content %}
+<div style="text-align: center;">
+    {{ post.text|safe }}
+</div>
+{% endblock %}

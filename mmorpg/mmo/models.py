@@ -31,6 +31,9 @@ class Category(models.Model):
     name = models.CharField(max_length=11, choices=CATEGORY_TYPES, default=dd)
     subscribers = models.ManyToManyField(User, blank=True, null=True, related_name='categories')
 
+    def __str__(self):
+        return dict(Category.CATEGORY_TYPES)[self.name]
+
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
@@ -39,6 +42,9 @@ class Post(models.Model):
     date_in = models.DateTimeField(auto_now_add=True)
     #если True - у поста доступен отклик, при False отклик будет отсутствовать
     status = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
 
 class Response(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -1,8 +1,37 @@
 {% extends 'default.html' %}
 {% block title %}
-<h1>Все объявления</h1>
+<h1 class="page-title">Все объявления</h1>
 {% endblock %}
 {% block content %}
-<h1><a href="{% url 'posts_list' %}">Hiii</a></h1>
-<hr class="my-4" />
+    {% for p in posts %}
+        <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin-bottom: 20px;">
+            <h4><a href="{% url 'post' p.pk %}" style="text-decoration: none; color: black;">{{ p.title }}</a></h4>
+            <p>Категория: {{ p.category }}</p>
+            <p>{{ p.text|safe }}</p>
+            <p>Опубликовано {{ p.user }} {{ p.date_in|date:"d E Y, H:i" }}</p>
+            <p><a href="{% url 'post' p.pk %}" style="text-decoration: none; color: black;">🗨️</a></p>
+        </div>
+    {% endfor %}
+<div style="text-align: center;">
+    {% if page_obj.has_previous %}
+       <a href="?page=1">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {# Информация о текущей странице #}
+   {{ page_obj.number }}
+
+   {# Информация о следующих страницах #}
+   {% if page_obj.has_next %}
+       <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+</div>
 {% endblock %}
+
