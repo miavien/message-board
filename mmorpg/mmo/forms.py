@@ -13,3 +13,10 @@ class PostForm(forms.ModelForm):
         widgets = {
             'text': CKEditorUploadingWidget(),  # Используем CKEditor с возможностью загрузки файлов
         }
+
+class ResponseForm(forms.ModelForm):
+    class Meta:
+        model = Response
+        fields = [
+            'text',
+        ]

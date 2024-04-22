@@ -1,15 +1,13 @@
 {% extends 'default.html' %}
 {% block title %}
-<h1 class="page-title">Все объявления</h1>
+<h1 class="page-title">Все объявления категории {{ category_name }}</h1>
 {% endblock %}
 {% block content %}
-    {% for p in posts %}
+    {% for p in category_posts_list %}
         <div style="border: 2px solid #ccc; border-radius: 10px; padding: 15px; margin-bottom: 20px; background-color: #f8f9fa;">
             <p>{{ p.user }} {{ p.date_in|date:"d E Y, H:i" }}</p>
             <h4><a href="{% url 'post' p.pk %}" style="text-decoration: none; color: black;">{{ p.title }}</a></h4>
-            <a href="{% url 'category_list' category_pk=p.category.pk %}" style="color: inherit; text-decoration: none;">
-                <p style="font-size: 18px; color: gray;">Категория: {{ p.category }}</p>
-            </a>
+            <p style="font-size: 18px; color: gray;">Категория: {{ p.category }}</p>
             <span style="font-size: 22px;">{{ p.text|safe }}</span>
             <p><i><a href="{% url 'post' p.pk %}" style="text-decoration: none; color: black;">Откликнуться 💬 ️️</a></i></p>
         </div>
@@ -36,4 +34,3 @@
    {% endif %}
 </div>
 {% endblock %}
-
