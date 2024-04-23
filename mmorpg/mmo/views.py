@@ -2,8 +2,25 @@ from django.http import request, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import *
+from django_filters import FilterSet
+
 from .models import *
 from .forms import *
+
+class PostFilter(FilterSet):
+    class Meta:
+        model = Response
+        fields = [
+            'post'
+        ]
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(PostFilter, self).__init__(*args, **kwargs)
+        if user:
+            self.filters['post'].queryset = Post.objects.filter(user=user)
+        if not self.data:
+            self.queryset = Response.objects.none()
+
 
 # Create your views here.
 class PostsList(ListView):
@@ -71,3 +88,27 @@ class CategoryList(PostsList):
         category_dict = dict(Category.CATEGORY_TYPES)
         context['category_name'] = category_dict.get(category.name, category.name)
         return context
+
+class Personal(TemplateView):
+    template_name = 'pesonal.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        queryset = Response.objects.none()
+        if self.request.GET:
+            queryset = Response.objects.filter(post__user=self.request.user)
+        context['filterset'] = PostFilter(self.request.GET, queryset=queryset)
+        return context
+
+def accept_response(request, response_id):
+    response = get_object_or_404(Response, pk=response_id)
+    if request.user.is_authenticated and request.user == response.post.user:
+        response.status = True
+        response.save()
+    return redirect(reverse('personal'))
+
+def deny_response(request, response_id):
+    response = get_object_or_404(Response, pk=response_id)
+    if request.user.is_authenticated and request.user == response.post.user:
+        response.delete()
+    return redirect(reverse('personal'))
