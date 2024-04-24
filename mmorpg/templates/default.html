@@ -20,6 +20,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link" href="{% url 'post_create' %}">Добавить объявление</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'logout_confirm' %}">Выйти</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Войти</a></li>
+                        {% endif %}
                         <li class="nav-item dropdown">
                             <a class="nav-link" id="navbarDropdown" href="{% url 'personal' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Профиль</a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

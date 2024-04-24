@@ -1,8 +1,12 @@
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
+
+class User(AbstractUser):
+    code = models.CharField(max_length=15, blank=True, null=True)
+
 class Category(models.Model):
     dd = 'DD'
     tank = 'TANK'
@@ -40,8 +44,6 @@ class Post(models.Model):
     text = RichTextUploadingField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=Category.dd)
     date_in = models.DateTimeField(auto_now_add=True)
-    #если True - у поста доступен отклик, при False отклик будет отсутствовать
-    status = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
