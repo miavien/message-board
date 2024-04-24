@@ -11,6 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 from pathlib import Path
+import logging
+
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,9 +50,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # ... include the providers you want to enable:
-    'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.yandex',
 ]
 
 MIDDLEWARE = [
@@ -228,3 +230,22 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 ACCOUNT_FORMS = {'signup': 'mmo.forms.CommonSignupForm'}
 
 SITE_URL = 'http://127.0.0.1:8000'
+
+# SOCIALACCOUNT_PROVIDERS = {
+#     'yandex': {
+#         'APP': {
+#             'client_id': '91640bcfb1f54df29df49559ce420275',
+#             'secret': 'a70bf37f09344496bdbdf48d603e5f66',
+#             'key': ''
+#         }
+#     }
+# }
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_SSL = True
+EMAIL_SERVER = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
