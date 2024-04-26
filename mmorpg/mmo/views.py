@@ -86,8 +86,16 @@ class CategoryList(PostsList):
         category_id = self.kwargs['category_pk']
         category = get_object_or_404(Category, pk=category_id)
         category_dict = dict(Category.CATEGORY_TYPES)
+        context['category'] = category
+        context['is_not_subscriber'] = self.request.user not in category.subscribers.all()
         context['category_name'] = category_dict.get(category.name, category.name)
         return context
+
+def subscribe(request, pk):
+    user = request.user
+    category = Category.objects.get(id=pk)
+    category.subscribers.add(user)
+    return render(request, 'subscribe_success.html')
 
 class Personal(TemplateView):
     template_name = 'pesonal.html'

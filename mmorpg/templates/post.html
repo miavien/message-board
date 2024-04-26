@@ -21,9 +21,8 @@
     <button type="submit" class="btn btn-primary">Отправить отклик</button>
 </form>
 <br>
-
+<h2>Отклики:</h2>
 {% if post.response_set.all %}
-    <h2>Отклики:</h2>
     <ul>
         {% for response in post.response_set.all %}
             {% if user == post.user or user == response.user %}
@@ -31,11 +30,14 @@
                     <div style="font-weight: bold; margin-bottom: 5px;">{{ response.user }} <span style="color: gray;">{{ response.date_in|date:"d E Y, H:i" }}</span></div>
                     <div style="margin-bottom: 5px;">{{ response.text }}</div>
                 </div>
-            {% else %}
-                <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin-bottom: 10px; margin-right: 100px;">
-                    <div style="font-weight: bold; margin-bottom: 5px;">{{ response.user }} <span style="color: gray;">{{ response.date_in|date:"d E Y, H:i" }}</span></div>
-                    <div style="margin-bottom: 5px;">{{ response.text }}</div>
-                </div>
+            {% endif %}
+            {% if user != post.user or user != response.user %}
+                {% if response.status %}
+                    <div style="border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin-bottom: 10px; margin-right: 100px;">
+                        <div style="font-weight: bold; margin-bottom: 5px;">{{ response.user }} <span style="color: gray;">{{ response.date_in|date:"d E Y, H:i" }}</span></div>
+                        <div style="margin-bottom: 5px;">{{ response.text }}</div>
+                    </div>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </ul>

@@ -11,4 +11,5 @@ urlpatterns = [
     path('accept_response/<int:response_id>/', accept_response, name='accept_response'),
     path('deny_response/<int:response_id>/', deny_response, name='deny_response'),
     path('confirm/', ConfirmUser.as_view(), name='confirm_user'),
+    path('posts/category/<int:pk>/subscribe/', subscribe, name='subscribe')
 ]
