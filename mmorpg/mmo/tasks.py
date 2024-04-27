@@ -8,12 +8,11 @@ from .models import *
 @shared_task
 def send_notify_new_post(pk):
     post = Post.objects.get(pk=pk)
-    categories = post.category.all()
+    category = post.category
     subscribers_emails = []
 
-    for cat in categories:
-        subscribers = cat.subscribers.all()
-        subscribers_emails += [s.email for s in subscribers]
+    subscribers = category.subscribers.all()
+    subscribers_emails += [s.email for s in subscribers]
 
     html_content = render_to_string(
         template_name='post_created_email.html',

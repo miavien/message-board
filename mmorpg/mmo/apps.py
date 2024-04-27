@@ -4,3 +4,6 @@ from django.apps import AppConfig
 class MmoConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'mmo'
+
+    def ready(self):
+        import mmo.signals
