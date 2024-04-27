@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import *
 from django_filters import FilterSet
+from .tasks import send_notify_new_post
 
 from .models import *
 from .forms import *
@@ -59,6 +60,7 @@ class PostCreate(CreateView):
         form.instance.user = self.request.user
         post = form.save(commit=False)
         post.save()
+        # send_notify_new_post.delay(post.pk)
         return super().form_valid(form)
 
     def get_success_url(self):
