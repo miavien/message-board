@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c417474-4566-42c1-9e4e-4101dc58a6a8" name="Changes" comment="отправка писем с новым постом2">
+    <list default="true" id="8c417474-4566-42c1-9e4e-4101dc58a6a8" name="Changes" comment="перед apscheduler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mmorpg/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mmorpg/mmo/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmo/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mmorpg/mmo/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmo/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mmorpg/mmo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmo/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mmorpg/mmorpg/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/mmorpg/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mmorpg/templates/post_created_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/templates/post_created_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmorpg/templates/account/account_inactive.html" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/templates/account/account_inactive.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmorpg/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mmorpg/templates/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/mmorpg/templates/post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714193789648</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="перед apscheduler">
+      <option name="closed" value="true" />
+      <created>1714214392552</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1714214392552</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -176,6 +183,7 @@
     <MESSAGE value="проблема с регистрацией2" />
     <MESSAGE value="отправка писем с новым постом" />
     <MESSAGE value="отправка писем с новым постом2" />
-    <option name="LAST_COMMIT_MESSAGE" value="отправка писем с новым постом2" />
+    <MESSAGE value="перед apscheduler" />
+    <option name="LAST_COMMIT_MESSAGE" value="перед apscheduler" />
   </component>
 </project>

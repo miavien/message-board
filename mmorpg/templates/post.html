@@ -1,6 +1,7 @@
 {% extends 'default.html' %}
 {% block title %}
 <h1>{{ post.title }}</h1>
+<div style="margin-bottom: 5px; font-size: 18px;">{{ post.user }} {{ post.date_in|date:"d E Y, H:i" }}</div>
 <hr>
 {% endblock %}
 {% block content %}

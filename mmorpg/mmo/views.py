@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import request, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
@@ -51,7 +52,7 @@ class PostDetail(DetailView):
             response.save()
             return redirect('post', pk=post.pk)
 
-class PostCreate(CreateView):
+class PostCreate(LoginRequiredMixin, CreateView):
     form_class = PostForm
     model = Post
     template_name = 'post_create.html'
@@ -67,7 +68,7 @@ class PostCreate(CreateView):
         return reverse_lazy('post', kwargs={'pk': self.object.pk})
 
 
-class PostUpdate(UpdateView):
+class PostUpdate(LoginRequiredMixin, UpdateView):
     form_class = PostForm
     model = Post
     template_name = 'post_create.html'
@@ -99,7 +100,7 @@ def subscribe(request, pk):
     category.subscribers.add(user)
     return render(request, 'subscribe_success.html')
 
-class Personal(TemplateView):
+class Personal(LoginRequiredMixin, TemplateView):
     template_name = 'pesonal.html'
 
     def get_context_data(self, **kwargs):
