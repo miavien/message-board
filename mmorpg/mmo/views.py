@@ -105,9 +105,7 @@ class Personal(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        queryset = Response.objects.none()
-        if self.request.GET:
-            queryset = Response.objects.filter(post__user=self.request.user)
+        queryset = Response.objects.filter(user=self.request.user)
         context['filterset'] = PostFilter(self.request.GET, queryset=queryset)
         return context
 
