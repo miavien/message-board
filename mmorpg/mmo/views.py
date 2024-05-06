@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import *
 from django_filters import FilterSet
-from .tasks import send_notify_new_post
 
 from .models import *
 from .forms import *
@@ -16,13 +15,8 @@ class PostFilter(FilterSet):
             'post'
         ]
     def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
         super(PostFilter, self).__init__(*args, **kwargs)
-        if user:
-            self.filters['post'].queryset = Post.objects.filter(user=user)
-        if not self.data:
-            self.queryset = Response.objects.none()
-
+        self.filters['post'].queryset = Post.objects.filter(user=kwargs.get('request'))
 
 # Create your views here.
 class PostsList(ListView):
@@ -105,8 +99,8 @@ class Personal(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        queryset = Response.objects.filter(user=self.request.user)
-        context['filterset'] = PostFilter(self.request.GET, queryset=queryset)
+        queryset = Response.objects.filter(post__user=self.request.user)
+        context['filterset'] = PostFilter(self.request.GET, queryset=queryset, request=self.request.user.pk)
         return context
 
 def accept_response(request, response_id):

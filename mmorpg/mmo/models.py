@@ -55,3 +55,6 @@ class Response(models.Model):
     date_in = models.DateTimeField(auto_now_add=True)
     #false - отклик не принят
     status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.text

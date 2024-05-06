@@ -232,15 +232,6 @@ ACCOUNT_FORMS = {'signup': 'mmo.forms.CommonSignupForm'}
 
 SITE_URL = 'http://127.0.0.1:8000'
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'yandex': {
-#         'APP': {
-#             'client_id': '91640bcfb1f54df29df49559ce420275',
-#             'secret': 'a70bf37f09344496bdbdf48d603e5f66',
-#             'key': ''
-#         }
-#     }
-# }
 
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
@@ -257,10 +248,17 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 # формат даты
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 
 # если задача не выполняется за 25 секунд, то она автоматически снимается, можно поставить время побольше, но как правило, это сильно бьёт по производительности сервера
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache_files'), # Указываем, куда будем сохранять кэшируемые файлы! Не забываем создать папку cache_files внутри папки с manage.py!
+    }
+}
